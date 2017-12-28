@@ -31,7 +31,20 @@ function ret = findMinimalSpanningTree (M)
     endfor;
     
     #Search for min value
+    startRow = minRowIndex;
+    startCol = minColIndex;
+    for i = startRow : rows(M),
+      for j = startCol : columns(M),
+        if(M(i, j) <= minValue && occupied(i, j) != 0),
+          minValue = M(i, j);
+          minRowIndex = i;
+          minColIndex = j;
+        endif;
+      endfor;
+    endfor;
     
+    occupied(minRowIndex, minColIndex) = 0;
+          
     minValue
     minRowIndex
     minColIndex
