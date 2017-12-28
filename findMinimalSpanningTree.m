@@ -51,13 +51,13 @@ function ret = findMinimalSpanningTree (M)
     #Make sure the edge is not creating a loop.
     #If one end of the edge can reach the other end, without going through the same edge,
     #a loop has been created. If that is the case, skip the edge.
-     
-    
+    foundLoop = hasLoop(M, minRowIndex, minColIndex, minColIndex, minRowIndex)
           
     minValue
     minRowIndex
     minColIndex
     whileLoops = whileLoops - 1;
+    break;
   endwhile;
   
   ret = 1;
