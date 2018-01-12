@@ -10,7 +10,6 @@ function ret = findMinimalSpanningTree (M)
   minimalSpanningTree = zeros(rows(M), columns(M));
   
   #Start picking the lowest edge
-  whileLoops = 8;
   while(getCurrentNumberOfEdges(minimalSpanningTree) < finalNumberOfEdges)
     minRowIndex = 0;
     minColIndex = 0;
@@ -19,7 +18,7 @@ function ret = findMinimalSpanningTree (M)
     minValue = -1;
     for i = 1 : rows(M),
       for j = 1 : columns(M),
-        if(M(i, j) > 0),
+        if((M(i, j) > 0) && (occupied(i, j) != 0)),
           minValue = M(i, j);
           minRowIndex = i;
           minColIndex = j;
@@ -59,6 +58,7 @@ function ret = findMinimalSpanningTree (M)
       minimalSpanningTree(minRowIndex, minColIndex) = minValue;
       minimalSpanningTree(minColIndex, minRowIndex) = minValue;
     endif;
+    occupied
   endwhile;
   
   ret = minimalSpanningTree;
